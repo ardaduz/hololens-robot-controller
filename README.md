@@ -1,8 +1,18 @@
-# 3D Vision Spring 2019 - Hololens Robot Controller
+# HoloLens Robot Controller 
+3D Vision, ETHZ, Spring 2019 - http://www.cvg.ethz.ch/teaching/3dvision/
 
-3D Vision - Spring 2019
-http://www.cvg.ethz.ch/teaching/3dvision/
+#### Authors: 
+* Arda Duzceker
+* Jonas Hein
+* Octavio Siller
+* Sophokles Ktistakis
 
-This project consists of two parts, namely a Unity App and a ROS Node. The Unity App is supposed to be run on a Hololens, while the ROS Node runs on the Trimbot.
+Are you ready to change your perception on what a remote controller is?
+
+HoloLens Robot Controller is an system that is specially developed for Microsoft HoloLens and Trimbot. It enables you to comfortably control a robot (called Trimbot) using either a holographic joystick or by air-tapping to a location anywhere in the room to command the robot to move there. Also, while wearing the HoloLens, we show you what the robot "sees" and "knows" as a hologram of 3D points. You can then observe which areas the robot knows well and which areas the robot has not learned about yet. So, you can decide on your commands deliberatively.
+
+How does this work? In very simple terms, both the robot and the HoloLens have a map of their environment that is created and constantly updated using the sensor data (e.g. cameras, depth-sensors). In our case we have two independent devices and therefore two independent maps. In order to show the user the robot map or to understand where the user air-tapped, we calculate in the background the position and orientation of the robot in the map of the HoloLens. This 3D transformation can then be used to calculate where the robot must go to reach the tapped position.
+
+For a detailed explanation of the project and the implementation, please refer to the [project report].
 
 **Please refer to the [Unity-App-README](unity_app/README.md) and the [ROS-Node-README](ros_node/README.md) for a guide on installation and deployment.**
