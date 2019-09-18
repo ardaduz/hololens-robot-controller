@@ -23,6 +23,6 @@ The main milestones of the project are:
 4. Displaying the robot's map on top of the real environment in HoloLens
 5. Being able to send desired commands to the robot
 
-**For a detailed explanation of the project and the implementation, please refer to the project [report](/report.pdf) or poster(/poster.pdf)**
+**For a detailed explanation of the project and the implementation, please refer to the project [report](/report.pdf) or [poster](/poster.pdf)**
 
 **For a guide on installation and deployment, please refer to the [Unity-App-README](unity_app/README.md) and the [ROS-Node-README](ros_node/README.md)**
