@@ -1,0 +1,22 @@
+<launch>
+    <node name="HololensRobotController" pkg="hololens_robot_controller" type="hololens_robot_controller_node">
+        <param name="hololensMeshTopic" value="/hololens/point_cloud" type="str" />
+        <param name="markerPoseTopic" value="/hololens/marker_pose" type="str" />
+        <param name="trimbotMapTopic" value="/slam/map" type="str" />
+        <param name="alignedMapTopic" value="/trimbot/alignedmap" type="str" />
+        <param name="hololensGoalPoseTopic" value="/trimbot/goal" type="str" />
+        <param name="trimbotGoalPoseTopic" value="/move_base_simple/goal" type="str" />
+
+        <param name="trimbotMarkerFrameName" value="base_marker" type="str" />
+        <param name="hololensWorldFrameName" value="hololens_world" type="str" />
+        <param name="trimbotWorldFrameName" value="colmap" type="str" />
+        <param name="trimbotBaseFrameName" value="base_footprint" type="str" />
+
+        <param name="markerCorrectionRate" value="0.2" type="double" />
+        <param name="pointCloudAlignmentRate" value="1.0" type="double" />
+        <param name="minPointCloudSize" value="500" type="int" />
+        <param name="resetOnRelativeChangeOfSize" value="0.25" type="double" />
+        <param name="fitnessScoreRelaxationFactor" value="1.1" type="double" />
+
+    </node>
+</launch>

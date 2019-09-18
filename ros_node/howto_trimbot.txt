@@ -1,0 +1,98 @@
+======================
+How to use the TrimBot
+======================
+
+Feel free to extend this file if you think something is missing or incorrect.
+
+===================
+General Information
+===================
+
+Coordinate Systems
+==================
+
+There are 2 different conventions used for coordinate systems. The SLAM uses the computer vision convention with Z->front / X->right / Y->down. The robot uses the robotics convention X->front / Y->left / Z->up. You can use ROS TF to convert between different coordinate systems. Your world coordinate system for the robot should be 'map'.
+
+Published data
+==============
+
+Map: Pointcloud2 message on '/slam/map'
+
+Robot pose: TF frames 'base_link' (on wheel axis height) or 'base_footprint' (on the ground), both located in the center between the wheels (robot convention).
+
+
+Control input (This is what you will need to send to control the robot)
+=============
+
+Target pose: geometry_msgs/PoseStamped to 'move_base_simple/goal'
+
+Pose estimate *This might be helpful to initialize - you could send an initial pose estimate and close goal to make the robot move slightly. This is required to initialize the map and consequenctly localization): geometry_msgs/PoseWithCovarianceStamped to 'initialpose'.
+
+
+=====
+Setup
+=====
+
+A) Startup the TrimBot platform
+===============================
+
+0. If you are carrying the TrimBot, please use the handle on the robot itself, not the aluminum profiles. They are a bit akward to attach and might not be screwed in super thight.
+1. Put the TrimBot in the charging station
+2. Make sure the TrimBot is turned off (Try to turn the switch counter-clockwise as seen from below)
+	-> The switch is at the bottom, between the wheels
+3. Unplug the charging station from power
+4. Plug in the charging station 
+5. Turn the TrimBot on (Turn the switch 180 deg clockwise as seen from below)
+6. After a few seconds, the display should turn on (and stay on)
+
+B) Setup the hardware
+=====================
+
+1. *CAREFULY* put the camera rig on the TrimBot
+	-> Try not to touch the cameras
+	-> Pull the lever at the camera holder to click it in (MAKE SURE THAT THE CAMERA IS PROPERLY ATTACHED BEFORE CONTINUING)
+	-> Make sure that the first stereo pair (marked with a small piece of tape) points forward
+2. Put the alienware laptop on the trimbot (No special attachment, it just sits on the aluminium bars)
+3. Plug in the camera's USB cable
+	-> Make sure that the laptop detects the camera's mass storage
+4. Plug in the TrimBot's USB cable
+
+
+C) Alienware software setup
+=================
+
+(The laptop is set to a US keyboard layout - I assume you can touch type)
+1. Start the WiFi hotspot
+	-> Go to WiFi settings
+	-> Turn on Wi-Fi Hotspot (Drop down besides the big ON/OFF button in the top bar)
+	-> The network name should be 'cvg-laptop-01'
+	-> The password should be '1WzH1vtM'
+2. Setup the environment. You will need to do this for every new console
+	-> Go the the ROS workspace ('cd /home/trimbot/dev/ros/catkin_ws')
+	-> Setup the ROS environment ('source devel/setup.bash')
+3. Start the ROS Master ('roscore')
+4. [In a new console] Start the launch script ('roslaunch gcslam 3dv_navigation.launch')
+
+
+D) Lenovo setup
+===============
+
+(ROS is already set up here, so no need to do this manually)
+1. Make sure the WiFi is connected to the Alienware's hotspot and the ROS master is running there
+2. ROS relies on two environment variables, ROS_MASTER_URI and ROS_IP. Set ROS_MASTER_URI to the Alienware's ROS_MASTER_URI (which is printed when roscore is started, should be http://10.42.0.1:11311/). Set the ROS_IP to Lenovo's IP (i.e. 10.42.0.xxx).
+3. Plug in the Gamepad and run the joystick node for remote control ('roslaunch indego_ratio joystick.launch')
+	-> Control the TrimBot with the left joystick while holding the 'LB' button
+	-> You can switch to a slow driving mode by holding the 'back' button instead of 'LB'
+4. [In a new console] Run Rviz ('rviz')
+	-> You can display the robot pose by displaying the TF topics 'base_link' or 'base_footprint'
+	-> 'map' (TF) Should be your reference frame
+	-> 'colmap' (TF) is out internal map frame
+	-> '/localization/currentPose/' (Pose topic) is the camera position with out internal (turned) coordinate frame
+	-> You can set a navigation goal by clicking the '2D Nav Goal' button and placing the goal in pose in the map
+	-> Results for path planning and execution might vary, but this is not part of your task.
+
+E) Issue handling
+=================
+
+1. If the STOP button was pressed the robot will complain and possibly not move any more. Type in the code ('0000') and put it back into the charging station to restart.
+2. If you get weird poses or the system on the Robot seems to be stuck, just restart the '3dv_navigation' script.

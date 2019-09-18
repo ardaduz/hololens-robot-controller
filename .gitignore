@@ -1,0 +1,16 @@
+# Ignore unnecessary Latex stuff
+**/*.aux
+**/*.bbl
+**/*.blg
+**/*.fdb_latexmk
+**/*.fls
+**/*.log
+**/*.synctex.gz
+
+# Ignore CLion stuff
+**/.idea
+ros_node/build
+ros_node/clion.sh
+
+tutorials
+**/*.bag
