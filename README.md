@@ -13,6 +13,6 @@ HoloLens Robot Controller is an system that is specially developed for Microsoft
 
 How does this work? In very simple terms, both the robot and the HoloLens have a map of their environment that is created and constantly updated using the sensor data (e.g. cameras, depth-sensors). In our case we have two independent devices and therefore two independent maps. In order to show the user the robot map or to understand where the user air-tapped, we calculate in the background the position and orientation of the robot in the map of the HoloLens. This 3D transformation can then be used to calculate where the robot must go to reach the tapped position.
 
-For a detailed explanation of the project and the implementation, please refer to the [project report].
+For a detailed explanation of the project and the implementation, please refer to the [project report](/report.pdf).
 
 **Please refer to the [Unity-App-README](unity_app/README.md) and the [ROS-Node-README](ros_node/README.md) for a guide on installation and deployment.**
