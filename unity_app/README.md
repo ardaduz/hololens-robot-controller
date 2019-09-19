@@ -2,6 +2,7 @@
 ## Prerequisites
 * Unity 2018.x.x or later (Developed with 2018.3.11f1)
 * Microsoft Visual Studio (Developed with Community 2017 Edition)
+* Windows 10.x SDK (Developed with 10.0.17763.0)
 
 ## Reminder on external libraries and assets
 * You do not have to install anything under this section by yourself, necessary files are already provided as in Assets folder.
