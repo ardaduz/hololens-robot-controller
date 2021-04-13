@@ -19,6 +19,3 @@
 * In the file dialog, select the `unity_app/HololensRobotController/App` directory, create the directory if it does not exist.
 * After build is finished, open the Visual Studio solution located at `unity_app/HololensRobotController/App/Hololens Robot Controller.sln` (be careful with the directory, the correct solution is in the App folder, not in the root)
 
-## Deploying the application from Visual Studio
-* 
-
